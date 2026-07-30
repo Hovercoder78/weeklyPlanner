@@ -1,0 +1,23 @@
+CC = g++
+
+CXXFLAGS = -Wall -g
+
+TARGET = weeklyPlanner
+
+OBJS = main.o Function.o
+
+DEPS = Functions.h
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
+
+main.o main.cpp $(DEPS)
+	$(CXX) $(CXXFLAGS) -c main.cpp
+
+Functions.o: Functions.cpp $(DEPS)
+	$(CXX) $(CXXFLAGS) -c Function.cpp
+
+clean:
+	rm -f $(OBJS) $(TARGET)
